@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="min-h-screen bg-zinc-900 p-10 text-white">
+        <a class="text-white px-5 py-2 bg-zinc-500 rounded-lg" href="/">Add a New Todo task</a>
+        <h1 class="text-3xl mt-10 tracking-tighter mb-3">All Tasks</h1>
+        <div class="todos flex gap-3 flex-wrap">
+            <% if(todos.length>0 ){ %>
+                <% todos.forEach(function(todo){ %>
+                    <div class="todo w-72 p-4 bg-zinc-800 rounded-lg">
+                        <h3 class="text-xl mt-3 tracking-tighter">
+                            <%= todo.task %>
+                        </h3>
+                        <h5 class="text-zinc-500">
+                            <%= todo.detail %>
+                        </h5>
+                        <div class="flex gap-3 mt-10">
+                            <a class="text-zinc-200 px-5 py-2 bg-orange-500 rounded-lg" href="/edit/<%= todo._id %>">Edit Task</a>
+                            <a class="text-white px-5 py-2 bg-red-500 rounded-lg" href="/delete/<%= todo._id %>">Delete Task</a>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else{ %>
+                            <h3 class="text-zinc-500">no tasks</h3>
+                            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
